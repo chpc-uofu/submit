@@ -1,0 +1,6 @@
+*.img
+git.info
+*~
+*.sw[p-s]
+*.out
+issues.txt

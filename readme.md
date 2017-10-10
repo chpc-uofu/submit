@@ -17,7 +17,7 @@ The executable is submitted like an MPI job, e.g.:
 mpirun -genv I_MPI_WAIT_MODE 1 -np $SLURM_NTASKS path_to/submit
 ```
 
-The submit program takes in input file called `job.list`, which syntax is as follows:
+The submit program reads in input file called `job.list`, which syntax is as follows:
 first line - # of serial jobs to run
 other lines - command line for these serial jobs (including program arguments). Make sure there is only single space between the program arguments - more that single space will break the command line.
 

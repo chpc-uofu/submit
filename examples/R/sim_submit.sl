@@ -15,18 +15,16 @@
 #SBATCH -o out.%j 
 #SBATCH -e err.%j
 
-export NTASKS=40 
+export NTASKS=$SLURM_NTASKS
 
 export EXE=./rwrapper.sh
-export WORK_DIR=/uufs/chpc.utah.edu/common/home/u0101881/usu/atredenn/submit_aug17
-export FILENAME=one_model_hpc.R
+export WORK_DIR=/uufs/chpc.utah.edu/common/home/u0101881/submit/submit/examples/R
 export SCRIPT_DIR=$WORK_DIR/Rfiles
 export OUT_DIR=$WORK_DIR/results
-export SCRATCH_DIR=$WORK_DIR/scratch
+export SCRATCH_DIR=$WORK_DIR
 
 # Load R (version 3.3.2)
-module use /uufs/chpc.utah.edu/common/home/u6012153/MyModules
-module load R/3.3.2.u6012153
+module load R/3.3.2
 module load impi # intel is already loaded from R
 
 # Run an array of serial jobs
@@ -42,7 +40,7 @@ for (( i=0; i < $NTASKS ; i++ )); do
 done >> job.list
 
 # Run a task on each core
-mpirun -genv I_MPI_WAIT_MODE 1 -np $SLURM_NTASKS /uufs/chpc.utah.edu/common/home/u0101881/submit/submit_impi/submit
+mpirun -genv I_MPI_WAIT_MODE 1 -np $SLURM_NTASKS /uufs/chpc.utah.edu/sys/installdir/submit/std/bin/submit
 
 # Clean-up the root scratch dir
 rm -rf $SCRATCH_DIR

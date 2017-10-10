@@ -25,7 +25,7 @@ done >> job.list
 
 # Run a task on each core
 #cd $WORK_DIR
-mpirun -genv I_MPI_WAIT_MODE 1  -np 4 ../../bin/submit
+mpirun -genv I_MPI_WAIT_MODE 1  -np 4 /uufs/chpc.utah.edu/sys/installdir/submit/std/bin/submit
 
 # Clean-up the root scratch dir
 #rm -rf $SCRATCH_DIR

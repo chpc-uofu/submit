@@ -24,7 +24,7 @@ submit:$(OBJS)
 	make -C tests
 
 test: 
-	mpirun -genv I_MPI_WAIT_MODE 1 -np 2 ../bin/submit
+	cd tests; mpirun -genv I_MPI_WAIT_MODE 1 -np 2 ../bin/submit
 
 clean: 
 	rm -f submit *.o 

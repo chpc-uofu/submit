@@ -273,7 +273,7 @@ typelist[2] = MPI_CHAR;
 MPI_Get_address(&(work_data->arg),&address);
 displacements[2] = address - start_address;
 
-MPI_Type_struct(W_DATA_TYPES, block_lengths, displacements, typelist, work_data_type);
+MPI_Type_create_struct(W_DATA_TYPES, block_lengths, displacements, typelist, work_data_type);
 MPI_Type_commit(work_data_type);
 
 }

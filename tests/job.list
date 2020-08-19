@@ -1,4 +1,6 @@
-2
-echo $PATH
-echo $PATH
+4
+./test
+./test
+./test
+./test
 

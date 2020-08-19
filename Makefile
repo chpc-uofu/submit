@@ -20,6 +20,7 @@ all: submit test
 
 submit:$(OBJS)	
 	$(CC) -o submit $(OBJS) $(LFLAGS) 
+	mkdir bin
 	mv submit bin
 	make -C tests
 

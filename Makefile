@@ -3,6 +3,8 @@
 #       Make master-slave work submit code with master also working (via OpenMP)
 #
 ###################################################################
+SHELL=/bin/bash
+
 CFLAGS  = -g -qopenmp 
 LFLAGS  = -qopenmp  
 LIB     = -c 
@@ -20,7 +22,7 @@ all: submit test
 
 submit:$(OBJS)	
 	$(CC) -o submit $(OBJS) $(LFLAGS) 
-	mkdir bin
+	@if [ ! -d "bin" ]; then mkdir bin; fi;
 	mv submit bin
 	make -C tests
 

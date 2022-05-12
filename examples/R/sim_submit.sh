@@ -10,7 +10,7 @@ export SCRATCH_DIR=$WORK_DIR
 
 # Load R (version 3.3.2)
 module load R/3.3.2
-module load impi # intel is already loaded from R
+module load impi/2018.1 # intel is already loaded from R
 
 # Run an array of serial jobs
 export OMP_NUM_THREADS=1

@@ -15,7 +15,8 @@
 #SBATCH -o out.%j 
 #SBATCH -e err.%j
 
-export NTASKS=$SLURM_NTASKS
+#export NTASKS=$SLURM_NTASKS
+export NTASKS=100
 
 export EXE=./rwrapper.sh
 export WORK_DIR=/uufs/chpc.utah.edu/common/home/u0101881/submit/submit/examples/R
@@ -25,7 +26,7 @@ export SCRATCH_DIR=$WORK_DIR
 
 # Load R (version 3.3.2)
 module load R/3.3.2
-module load impi # intel is already loaded from R
+module load impi/2018.1 # intel is already loaded from R
 
 # Run an array of serial jobs
 export OMP_NUM_THREADS=1
@@ -43,4 +44,4 @@ done >> job.list
 mpirun -genv I_MPI_WAIT_MODE 1 -np $SLURM_NTASKS /uufs/chpc.utah.edu/sys/installdir/submit/std/bin/submit
 
 # Clean-up the root scratch dir
-rm -rf $SCRATCH_DIR
+#rm -rf $SCRATCH_DIR
